@@ -6,6 +6,6 @@ COPY testsuite/test_requirements.txt /src/
 
 RUN pip install -r test_requirements.txt
 
-COPY weblog_helper.py testsuite /src/
+COPY web_log_helper.py testsuite /src/
 
 ENTRYPOINT ["./run_tests.sh"]

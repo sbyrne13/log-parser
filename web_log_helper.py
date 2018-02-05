@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Search a given log file for given IPs or CIDR ranges"""
+"""Search a given log file for given IPs or CIDR ranges."""
 import argparse
 import logging
 import netaddr
@@ -42,21 +42,22 @@ def validate_ips_from_cidr_ip(ip_input):
     return [str(ip) for ip in ips]
 
 
-def initialize_args_and_retrieve_input():
+def setup_args_and_retrieve_input():
     """Return the user input initializing the argument parser and documentation."""
-    parser = argparse.ArgumentParser(description="""Access Log Parser.\n
-                                                     You can use this tool to parse access logs and find lines that 
-                                                     contain the given IP or any IP in a CIDR range""")
+    parser = argparse.ArgumentParser(description="""Access Log Parser.
+                                                    You can use this tool to parse access logs
+                                                    and find lines that contain the given IP
+                                                    or any IP in a CIDR range""")
     parser.add_argument(
         '--log-file',
-        help="""This is log file that you wish to parse. 
+        help="""This is log file that you wish to parse.
                 You can provide a url or a file path\n
                 Example: /home/sean/log.txt, https://example.com/log.txt""",
         required=True
     )
     parser.add_argument(
         '--ip',
-        help="""This is the ip that you are trying to find. 
+        help="""This is the ip that you are trying to find.
                 You can search for a single IP or a range of IPs based on a CIDR\n
                 Examples: 192.168.1.1, 192.168.1.1/24""",
         required=True,
@@ -65,17 +66,12 @@ def initialize_args_and_retrieve_input():
 
 
 if __name__ == '__main__':
-    user_input = initialize_args_and_retrieve_input()
-    log_file_path = user_input.log_file
-    ip_address_list = validate_ips_from_cidr_ip(user_input.ip)
-    file_contents = retrieve_file_contents(log_file_path)
-    entries = search_log_for_ips(file_contents, ip_address_list)
-    LOG.info('Log Search Completed. The IP/CIDR %s has %i entries in the log', user_input.ip, entries)
-    if isinstance(file_contents, file):
-        file_contents.close()
-
-
-
-
-
-
+    USER_INPUT = setup_args_and_retrieve_input()
+    LOG_FILE_PATH = USER_INPUT.log_file
+    IP_ADDRESS_LIST = validate_ips_from_cidr_ip(USER_INPUT.ip)
+    FILE_CONTENTS = retrieve_file_contents(LOG_FILE_PATH)
+    ENTRIES = search_log_for_ips(FILE_CONTENTS, IP_ADDRESS_LIST)
+    LOG.info('Log Search Completed. The IP/CIDR %s has %i entries in the log',
+             USER_INPUT.ip, ENTRIES)
+    if isinstance(FILE_CONTENTS, file):
+        FILE_CONTENTS.close()

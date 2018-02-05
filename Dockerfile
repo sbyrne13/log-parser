@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY web_log_helper.py /src/
 
-ENTRYPOINT ["./weblog_helper.py"]
+ENTRYPOINT ["./web_log_helper.py"]
