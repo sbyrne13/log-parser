@@ -1,6 +1,6 @@
 # Welcome to the log-parser!
 
-The purpose of this repository is to allow users to analyse http access logs primarily. The functionality only extends as far as allowing users to filter the logs on a given IP or a group of IPs from a given CIDR. The repo also contains a docker wrapper for this functionality as well as a docker based testsuite. 
+The primary purpose of this repository is to allow users to analyse http access logs. The functionality only extends as far as allowing users to filter the logs on a given IP or a group of IPs from a given CIDR. The repo also contains a docker wrapper for this functionality as well as a docker based testsuite. 
 
 
 ## Prerequisites
@@ -29,7 +29,7 @@ This information can also be seen through the help on the CLI itself using -h or
 
 ## Example Usage
 Below are some examples of some of the ways the script can be used
-> docker run --rm sgpbyrne/log-parser --ip 192.168.1.1 --log-file https://example.com/access_log.txt
+> docker run --rm sgpbyrne/log-parser --ip 192.168.1.1 --log-file https://s3.amazonaws.com/syseng-challenge/public_access.log.txt
 > ./web_log_helper.py --ip 192.168.1.1/32 --log-file /etc/logs/access.log
 
 In order to use the docker implementation for a log file on the host machine the logs directory or just the log file itself must be mounted as a volume like the following

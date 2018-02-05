@@ -39,7 +39,7 @@ def test_finding_cidr_in_log():
     assert_equals(count, 1)
 
 
-def test_getting_contents_of_file():
+def test_get_contents_of_file():
     """Test that you can open a file from the given path successfully."""
     test_file = open(TEST_FILE).read()
     file_string = retrieve_file_contents(TEST_FILE)
@@ -48,6 +48,6 @@ def test_getting_contents_of_file():
     assert_equals(len([file_string.split('\n')]), len([test_file.split('\n')]))
 
 
-def test_retrieving_file_from_fake_url():
+def test_get_file_from_fake_url():
     """Test that querying an incorrect file url throws a HTTPError."""
     assert_raises(HTTPError, retrieve_file_contents, FAKE_URL)
