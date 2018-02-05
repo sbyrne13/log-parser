@@ -52,7 +52,7 @@ def setup_args_and_retrieve_input():
         '--log-file',
         help="""This is log file that you wish to parse.
                 You can provide a url or a file path\n
-                Example: /home/sean/log.txt, https://example.com/log.txt""",
+                Examples: /home/sean/log.txt, https://example.com/log.txt""",
         required=True
     )
     parser.add_argument(

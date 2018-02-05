@@ -1,6 +1,6 @@
 """Nose Test Suite for the web_log_helper module."""
 from nose.tools import assert_equals, assert_raises
-import requests
+from requests import HTTPError
 from web_log_helper import validate_ips_from_cidr_ip, retrieve_file_contents, search_log_for_ips
 
 
@@ -49,5 +49,5 @@ def test_getting_contents_of_file():
 
 
 def test_retrieving_file_from_fake_url():
-    """Test that querying an incorrect file url throws a HTTPError"""
-    assert_raises(requests.HTTPError, retrieve_file_contents, FAKE_URL)
+    """Test that querying an incorrect file url throws a HTTPError."""
+    assert_raises(HTTPError, retrieve_file_contents, FAKE_URL)

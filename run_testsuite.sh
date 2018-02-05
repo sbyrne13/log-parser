@@ -6,7 +6,7 @@ if [[ $? -ne 0 ]] ; then
     exit 1
 fi
 
-time docker run --rm -t log-parser-test ./code_style_checks.sh
+time docker run --rm -t log-parser-test
 if [[ $? -ne 0 ]]
 then
     exit 1
