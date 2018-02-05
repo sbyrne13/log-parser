@@ -33,7 +33,7 @@ Below are some examples of some of the ways the script can be used
 > ./web_log_helper.py --ip 192.168.1.1/32 --log-file /etc/logs/access.log
 
 In order to use the docker implementation for a log file on the host machine the logs directory or just the log file itself must be mounted as a volume like the following
-> docker run --rm -v /home/<host-directory>/test.log:/<container-dir>/test.log sgpbyrne/log-parser --log-file /<container-dir>/test.log --ip 192.168.1.1
+> docker run --rm -v /home/host-directory/test.log:/container-dir/test.log sgpbyrne/log-parser --log-file /container-dir/test.log --ip 192.168.1.1
 
 ## Running the testsuite
 The testsuite folder contains a suite of linting checks as well as a set of simple nose test cases. These are currently run using docker but with some very slight modifications they can be run without docker. The run_testsuite.sh relies on docker so in order to make use of this wrapper you need to have docker installed. 
